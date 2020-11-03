@@ -2,12 +2,13 @@ package lager
 
 import (
 	"fmt"
-	"github.com/go-chassis/openlog"
 	"runtime"
 	"strconv"
 	"strings"
 	"sync/atomic"
 	"time"
+
+	"github.com/go-chassis/openlog"
 )
 
 //StackTraceBufferSize is a constant which defines stack track buffer size
@@ -20,10 +21,15 @@ type Logger interface {
 	Session(task string, data ...openlog.Option) Logger
 	SessionName() string
 	Debug(action string, data ...openlog.Option)
+	Debugf(format string, args ...interface{})
 	Info(action string, data ...openlog.Option)
+	Infof(format string, args ...interface{})
 	Warn(action string, data ...openlog.Option)
+	Warnf(format string, args ...interface{})
 	Error(action string, data ...openlog.Option)
+	Errorf(format string, args ...interface{})
 	Fatal(action string, data ...openlog.Option)
+	Fatalf(format string, args ...interface{})
 	WithData(openlog.Tags) Logger
 }
 
